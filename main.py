@@ -6,7 +6,7 @@ from ai_assistent import ai_assistant, start_button, ai_assistant_respond, clear
 from bmi_calculator import ask_weight, handle_bmi_input
 from gfr_calculator import ask_gfr, handle_gfr_input
 from instructions import instructions
-from ml import cancel, ecg, mri, xray, handle_image_upload
+from ml import ecg, mri, xray
 from open_api import request_image, handle_image_description
 from utils import init_pool
 

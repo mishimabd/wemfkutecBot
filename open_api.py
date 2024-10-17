@@ -3,10 +3,6 @@ import base64
 from telegram import Update
 from telegram.ext import CallbackContext
 
-OPENAI_API_KEY = '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'
-OPENAI_API_URL = 'https://api.openai.com/v1/images/generations'
-
-
 async def request_image(update: Update, context: CallbackContext):
     await update.message.reply_text("Пожалуйста, отправьте изображение для описания.")
 
@@ -25,7 +21,7 @@ async def handle_image_description(update: Update, context: CallbackContext):
 async def describe_image_with_chatgpt(image_path):
     # Prepare the API request
     headers = {
-        'Authorization': f'Bearer {OPENAI_API_KEY}',
+        # 'Authorization': f'Bearer {OPENAI_API_KEY}',
         'Content-Type': 'application/json'
     }
 
@@ -41,7 +37,7 @@ async def describe_image_with_chatgpt(image_path):
 
     # Send the request
     async with httpx.AsyncClient() as client:
-        response = await client.post(OPENAI_API_URL, headers=headers, json=json_payload)
+        response = await client.post("OPENAI_API_URL", headers=headers, json=json_payload)
 
     # Handle the response
     if response.status_code == 200:
