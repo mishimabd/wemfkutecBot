@@ -23,3 +23,9 @@ async def instructions(update: Update, context) -> None:
     )
     await update.message.reply_text(instructions_message, parse_mode="HTML")
 
+
+async def development(update: Update, context) -> None:
+    instructions_message = (
+        "Здравствуйте! В данный момент этот функционал в разработке!"
+    )
+    await update.message.reply_text(instructions_message, parse_mode="HTML")

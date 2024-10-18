@@ -5,8 +5,8 @@ from ai_assistent import ai_assistant, start_button, ai_assistant_respond, clear
     contact_handler
 from bmi_calculator import ask_weight, handle_bmi_input
 from gfr_calculator import ask_gfr, handle_gfr_input
-from instructions import instructions
-from ml import ecg, mri, xray
+from instructions import instructions, development
+from ml import ecg, mri, xray, handle_image_upload
 from open_api import request_image, handle_image_description
 from utils import init_pool
 
@@ -28,8 +28,8 @@ def main():
     application.add_handler(MessageHandler(filters.TEXT & filters.Regex("^(Анализ ЭКГ)$"), ecg))
     application.add_handler(MessageHandler(filters.TEXT & filters.Regex("^(Анализ МРТ)$"), mri))
     application.add_handler(MessageHandler(filters.TEXT & filters.Regex("^(Анализ рентгена легких)$"), xray))
-    application.add_handler(MessageHandler(filters.TEXT & filters.Regex("^(Анализ фото)$"), request_image))
-    application.add_handler(MessageHandler(filters.PHOTO, handle_image_description))
+    application.add_handler(MessageHandler(filters.TEXT & filters.Regex("^(Анализ фото)$"), development))
+    application.add_handler(MessageHandler(filters.PHOTO, handle_image_upload))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_gfr_input))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_bmi_input))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, ai_assistant))
